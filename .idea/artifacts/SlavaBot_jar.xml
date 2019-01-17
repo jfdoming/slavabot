@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="SlavaBot:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SlavaBot_jar</output-path>
+    <root id="archive" name="SlavaBot.jar">
+      <element id="module-output" name="SlavaBot" />
+    </root>
+  </artifact>
+</component>
