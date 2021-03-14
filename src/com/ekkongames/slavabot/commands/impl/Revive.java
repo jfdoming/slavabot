@@ -6,7 +6,7 @@ import com.ekkongames.jdacbl.commands.CommandInfo;
 import com.ekkongames.jdacbl.commands.CommandInput;
 import com.ekkongames.jdacbl.utils.PrimitiveUtils;
 import com.ekkongames.slavabot.PermissionConstants;
-import net.dv8tion.jda.core.entities.User;
+import net.dv8tion.jda.api.entities.User;
 
 /**
  * @author Julian Dominguez-Schatz <jfdoming at ekkon.dx.am>

@@ -1,18 +1,20 @@
-package com.ekkongames.slavabot.nauts;
+package com.ekkongames.slavabot.commands.impl.nauts;
 
 import com.ekkongames.jdacbl.commands.Command;
 import com.ekkongames.jdacbl.commands.CommandGroup;
 import com.ekkongames.jdacbl.commands.CommandInfo;
 import com.ekkongames.jdacbl.commands.CommandInput;
 import com.ekkongames.jdacbl.utils.BotUtils;
-import net.dv8tion.jda.core.entities.User;
+import net.dv8tion.jda.api.entities.Member;
+
+import java.util.List;
 
 /**
  * @author Julian Dominguez-Schatz <jfdoming at ekkon.dx.am>
  */
 public class NautsStatus extends Command {
 
-    private Nauts parent;
+    private final Nauts parent;
 
     public NautsStatus(Nauts parent) {
         super(
@@ -33,22 +35,22 @@ public class NautsStatus extends Command {
     @Override
     public void exec(CommandInput input) {
         // make sure the user specified a target
-        if (input.getTokenCount() < 2) {
+        input.discardToken(0);
+        CommandInput inputCopy = new CommandInput(input);
+        if (!children.exec(inputCopy, true)) {
             // show everyone's status
 
             StringBuilder builder = new StringBuilder();
             builder.append("```");
             builder.append("Online Users:\n");
 
-            for (User user : parent.onlineMembers) {
-                builder.append(user.getName());
+            List<Member> onlineMembers = parent.getOnlinePlayers(input);
+            for (Member member : onlineMembers) {
+                builder.append(member.getEffectiveName());
                 builder.append("\n");
             }
             builder.append("```");
             BotUtils.sendPlainMessage(builder.toString());
-        } else {
-            input.discardToken(0);
-            children.exec(input);
         }
     }
 

@@ -4,10 +4,6 @@ import com.ekkongames.jdacbl.commands.Command;
 import com.ekkongames.jdacbl.commands.CommandInfo;
 import com.ekkongames.jdacbl.commands.CommandInput;
 import com.ekkongames.jdacbl.utils.BotUtils;
-import com.ekkongames.slavabot.commands.impl.MessageTask;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-
-import java.util.TimerTask;
 
 /**
  * @author Julian Dominguez-Schatz <jfdoming at ekkon.dx.am>
@@ -67,11 +63,7 @@ public class ScheduleAdd extends Command {
         final String message = messageBuilder.toString();
 
         // schedule the message
-        final MessageReceivedEvent event = BotUtils.getEvent();
-        TimerTask taskToSchedule = new MessageTask(event, message);
-        state.getScheduler().scheduleAtFixedRate(taskToSchedule, delay, delay);
-        state.getTasks().put(messageId, taskToSchedule);
-        Scheduler.getPreferences().put(messageId, message);
+        state.scheduleAndStore(messageId, message, delay);
 
         BotUtils.sendMessage("Scheduled the message \"" + message + "\" every " + delay + " ms");
         BotUtils.sendPlainMessage("Your message id is \"" + messageId + "\".");

@@ -4,7 +4,7 @@ import com.ekkongames.jdacbl.commands.Command;
 import com.ekkongames.jdacbl.commands.CommandInfo;
 import com.ekkongames.jdacbl.commands.CommandInput;
 import com.ekkongames.jdacbl.utils.BotUtils;
-import net.dv8tion.jda.core.entities.User;
+import net.dv8tion.jda.api.entities.User;
 
 /**
  * Created by Dolphish on 2016-10-29.

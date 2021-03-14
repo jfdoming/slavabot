@@ -3,6 +3,7 @@ package com.ekkongames.slavabot;
 import com.ekkongames.jdacbl.bot.BotInfo;
 import com.ekkongames.jdacbl.bot.jar.EntryPoint;
 import com.ekkongames.jdacbl.commands.CommandGroup;
+
 import com.ekkongames.slavabot.commands.impl.Banish;
 import com.ekkongames.slavabot.commands.impl.Nickname;
 import com.ekkongames.slavabot.commands.impl.Revive;
@@ -15,7 +16,8 @@ import com.ekkongames.slavabot.commands.impl.Warns;
 import com.ekkongames.slavabot.commands.impl.music.Music;
 import com.ekkongames.slavabot.commands.impl.music.MusicPlay;
 import com.ekkongames.slavabot.commands.impl.sch.Schedule;
-import com.ekkongames.slavabot.nauts.Nauts;
+import com.ekkongames.slavabot.commands.impl.nauts.Nauts;
+import com.ekkongames.slavabot.commands.replies.RandomReplyCommand;
 
 /**
  * @author Julian Dominguez-Schatz <jfdoming at ekkon.dx.am>
@@ -29,8 +31,9 @@ public class SlavaBot implements EntryPoint {
     public static final String GAME = "$help for commands";
 
     @Override
-    public BotInfo run() {
+    public BotInfo getInfo() {
         CommandGroup commands = new CommandGroup.Builder()
+                .setCommandPrefix(COMMAND_PREFIX)
                 .add(new Toggle())
                 .add(new Warn())
                 .add(new Warns())
@@ -45,10 +48,14 @@ public class SlavaBot implements EntryPoint {
                 .add(new Music())
                 .add(new MusicPlay()) // I'm deliberately adding this here as well, for convenience.
                 .build();
+        CommandGroup replies = new CommandGroup.Builder()
+                .setSilent(true)
+                .add(new RandomReplyCommand())
+                .build();
         return new BotInfo.Builder()
-                .setCommandPrefix(COMMAND_PREFIX)
                 .setGame(GAME)
-                .setCommandGroup(commands)
+                .addCommandGroup(commands)
+                .addCommandGroup(replies)
                 .build(APIConstants.API_TOKEN);
     }
 

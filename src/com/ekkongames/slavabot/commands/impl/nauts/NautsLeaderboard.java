@@ -1,10 +1,10 @@
-package com.ekkongames.slavabot.nauts;
+package com.ekkongames.slavabot.commands.impl.nauts;
 
 import com.ekkongames.jdacbl.commands.Command;
 import com.ekkongames.jdacbl.commands.CommandInfo;
 import com.ekkongames.jdacbl.commands.CommandInput;
 import com.ekkongames.jdacbl.utils.BotUtils;
-import net.dv8tion.jda.core.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.MessageChannel;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -63,6 +63,7 @@ public class NautsLeaderboard extends Command {
             params.add(new BasicNameValuePair("action", "search"));
             params.add(new BasicNameValuePair("params[settings][sortOrder]", "asc"));
             params.add(new BasicNameValuePair("params[settings][username]", username));
+            params.add(new BasicNameValuePair("params[settings][mainNautId]", "32"));
             try {
                 post.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
                 HttpResponse response = client.execute(post);

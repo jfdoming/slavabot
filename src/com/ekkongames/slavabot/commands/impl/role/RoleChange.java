@@ -11,7 +11,7 @@ import com.ekkongames.jdacbl.utils.BotUtils;
  */
 public class RoleChange extends Command {
 
-    private CommandGroup subCommands;
+    private final CommandGroup subCommands;
 
     public RoleChange() {
         super(new CommandInfo.Builder()

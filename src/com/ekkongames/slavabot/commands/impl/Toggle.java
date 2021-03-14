@@ -34,22 +34,22 @@ public class Toggle extends Command {
             BotUtils.sendMessage("Listing toggles");
 
             String toggles = "```";
-            toggles += ("- Swears: " + (info.isAllowSwears() ? "" : "dis") + "allowed\n");
-            toggles += ("- Smart Filtering: " + (info.isSmartFiltering() ? "en" : "dis") + "abled");
+//            toggles += ("- Swears: " + (info.isAllowSwears() ? "" : "dis") + "allowed\n");
+//            toggles += ("- Smart Filtering: " + (info.isSmartFiltering() ? "en" : "dis") + "abled");
 
             BotUtils.sendPlainMessage(toggles + "```");
             return;
         }
 
         switch (input.getToken(1)) {
-            case "swears":
-                info.setAllowSwears(!info.isAllowSwears());
-                BotUtils.sendMessage("Swears have been " + (info.isAllowSwears() ? "" : "dis") + "allowed");
-                break;
-            case "smartFiltering":
-                info.setSmartFiltering(!info.isSmartFiltering());
-                BotUtils.sendMessage("Smart filtering has been " + (info.isSmartFiltering() ? "en" : "dis") + "abled");
-                break;
+//            case "swears":
+//                info.setAllowSwears(!info.isAllowSwears());
+//                BotUtils.sendMessage("Swears have been " + (info.isAllowSwears() ? "" : "dis") + "allowed");
+//                break;
+//            case "smartFiltering":
+//                info.setSmartFiltering(!info.isSmartFiltering());
+//                BotUtils.sendMessage("Smart filtering has been " + (info.isSmartFiltering() ? "en" : "dis") + "abled");
+//                break;
             default:
                 BotUtils.sendMessage("Unknown property");
         }

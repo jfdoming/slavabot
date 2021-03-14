@@ -6,8 +6,8 @@ package com.ekkongames.slavabot;
 public interface PermissionConstants {
     // roles
     String OWNER_ROLE = "Owner";
-    String MODERATOR_ROLE = "Moderator";
+    String MODERATOR_ROLE = "Snork Gunk";
 
     // role IDs
-    String AWESOMENAUTS_ROLE_ID = "356277230458109957";
+    String AWESOMENAUTS_ROLE_ID = "712415125285634130";
 }

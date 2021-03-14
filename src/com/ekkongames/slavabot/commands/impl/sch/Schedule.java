@@ -12,7 +12,7 @@ import com.ekkongames.slavabot.PermissionConstants;
  */
 public class Schedule extends Command {
 
-    private Scheduler state;
+    private final Scheduler state;
 
     public Schedule() {
         super(new CommandInfo.Builder()

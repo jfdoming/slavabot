@@ -6,7 +6,9 @@ import com.ekkongames.jdacbl.commands.Command;
 import com.ekkongames.jdacbl.commands.CommandInfo;
 import com.ekkongames.jdacbl.commands.CommandInput;
 import com.ekkongames.jdacbl.utils.BotUtils;
-import net.dv8tion.jda.core.entities.VoiceChannel;
+import net.dv8tion.jda.api.entities.VoiceChannel;
+
+import java.util.Objects;
 
 public class MusicPlay extends Command {
 
@@ -32,7 +34,11 @@ public class MusicPlay extends Command {
         // make sure we're in a voice channel before we start playing music
         if (BotUtils.getSelf().getVoiceState().getChannel() == null) {
             // connect to the voice channel, if the author is in the voice channel
-            VoiceChannel memberChannel = BotUtils.getEvent().getMember().getVoiceState().getChannel();
+            VoiceChannel memberChannel = Objects.requireNonNull(
+                    Objects.requireNonNull(
+                            BotUtils.getGuild().getMember(BotUtils.getAuthor())
+                    ).getVoiceState()
+            ).getChannel();
             if (memberChannel == null) {
                 BotUtils.sendMessage("You can't play music if you aren't in a voice channel");
                 return;

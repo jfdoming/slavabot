@@ -1,7 +1,10 @@
 package com.ekkongames.slavabot.commands.impl.sch;
 
 import com.ekkongames.slavabot.commands.impl.MessageTask;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.User;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.HashMap;
 import java.util.Timer;
@@ -26,25 +29,21 @@ public class Scheduler {
         return preferences;
     }
 
-    public Timer getScheduler() {
-        return scheduler;
-    }
-
     public HashMap<String, TimerTask> getTasks() {
         return tasks;
     }
 
-    public void schedule(MessageReceivedEvent event, String id, String message, long delay) {
+    public void schedule(String id, String message, long delay) {
         if (scheduler != null && tasks != null) {
-            TimerTask task = new MessageTask(event, message);
+            TimerTask task = new MessageTask(message);
             scheduler.scheduleAtFixedRate(task, delay, delay);
             tasks.put(id, task);
         }
     }
 
-    public void scheduleAndStore(MessageReceivedEvent event, String id, String message, long delay) {
+    public void scheduleAndStore(String id, String message, long delay) {
         if (scheduler != null && tasks != null) {
-            TimerTask task = new MessageTask(event, message);
+            TimerTask task = new MessageTask(message);
             scheduler.scheduleAtFixedRate(task, delay, delay);
             tasks.put(id, task);
             preferences.put(id, message);

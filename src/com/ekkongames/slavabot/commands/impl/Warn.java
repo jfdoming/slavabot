@@ -6,7 +6,7 @@ import com.ekkongames.jdacbl.commands.CommandInput;
 import com.ekkongames.jdacbl.utils.BotUtils;
 import com.ekkongames.jdacbl.utils.PrimitiveUtils;
 import com.ekkongames.slavabot.PermissionConstants;
-import net.dv8tion.jda.core.entities.User;
+import net.dv8tion.jda.api.entities.User;
 
 import java.util.prefs.Preferences;
 

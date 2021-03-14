@@ -36,7 +36,7 @@ public class ScheduleInit extends Command {
                 String delayString = storedValue.substring(0, storedValue.indexOf("\\"));
                 String message = storedValue.substring(storedValue.indexOf("\\") + 1);
                 long delay = Long.parseLong(delayString);
-                state.schedule(BotUtils.getEvent(), id, message, delay);
+                state.schedule(id, message, delay);
             }
         } catch (BackingStoreException e) {
             Log.w("Schedule Init Command", "Failed to locate backing store.");
