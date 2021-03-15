@@ -7,7 +7,6 @@ import com.ekkongames.jdacbl.commands.CommandInfo;
 import com.ekkongames.jdacbl.commands.CommandInput;
 import com.ekkongames.jdacbl.utils.BotUtils;
 import net.dv8tion.jda.api.entities.VoiceChannel;
-
 import java.util.Objects;
 
 public class MusicPlay extends Command {
@@ -45,7 +44,16 @@ public class MusicPlay extends Command {
             }
             controller.connectToChannel(memberChannel);
         }
-        controller.playTrack(input.getToken(1));
+
+        StringBuilder trackName = new StringBuilder();
+        for (int i = 1; i < input.getTokenCount(); i++) {
+            if (i > 1) {
+                trackName.append(' ');
+            }
+
+            trackName.append(input.getToken(i));
+        }
+        controller.playTrack(trackName.toString());
     }
 
 }

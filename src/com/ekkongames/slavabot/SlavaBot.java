@@ -7,6 +7,7 @@ import com.ekkongames.jdacbl.commands.CommandGroup;
 import com.ekkongames.slavabot.commands.impl.Banish;
 import com.ekkongames.slavabot.commands.impl.Nickname;
 import com.ekkongames.slavabot.commands.impl.Revive;
+import com.ekkongames.slavabot.commands.impl.music.MusicSkip;
 import com.ekkongames.slavabot.commands.impl.role.Role;
 import com.ekkongames.slavabot.commands.impl.Say;
 import com.ekkongames.slavabot.commands.impl.Toggle;
@@ -25,10 +26,10 @@ import com.ekkongames.slavabot.commands.replies.RandomReplyCommand;
 public class SlavaBot implements EntryPoint {
 
     // the string used to trigger command parsing
-    public static final String COMMAND_PREFIX = "$";
+    private static final String COMMAND_PREFIX = "$";
 
     // the game our bot is "playing"
-    public static final String GAME = "$help for commands";
+    private static final String GAME = "$help for commands";
 
     @Override
     public BotInfo getInfo() {
@@ -47,6 +48,7 @@ public class SlavaBot implements EntryPoint {
                 .add(new Nauts())
                 .add(new Music())
                 .add(new MusicPlay()) // I'm deliberately adding this here as well, for convenience.
+                .add(new MusicSkip()) // I'm deliberately adding this here as well, for convenience.
                 .build();
         CommandGroup replies = new CommandGroup.Builder()
                 .setSilent(true)
@@ -56,6 +58,7 @@ public class SlavaBot implements EntryPoint {
                 .setGame(GAME)
                 .addCommandGroup(commands)
                 .addCommandGroup(replies)
+                .setYoutubeToken(APIConstants.YOUTUBE_TOKEN)
                 .build(APIConstants.API_TOKEN);
     }
 
