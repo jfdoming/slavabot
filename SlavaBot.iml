@@ -10,12 +10,13 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../jdacbl/build/libs/JDACBL-1.0-SNAPSHOT.jar!/" />
+          <root url="jar://$MODULE_DIR$/../JDACBL/build/libs/JDACBL-1.0-SNAPSHOT-all.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../JDACBL/src/main/java" />
+        </SOURCES>
       </library>
     </orderEntry>
-    <orderEntry type="library" exported="" name="org.json:json:20201115" level="project" />
   </component>
 </module>
